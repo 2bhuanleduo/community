@@ -182,4 +182,34 @@ public class UserService implements CommunityConstant {
     public void logout(String ticket) {
         loginTicketMapper.updateStatus(ticket, 1);
     }
+
+    /**
+     * 方法功能：根据凭证找到登录的用户信息
+     * @param ticket
+     * @return
+     */
+    public LoginTicket findLoginTicket(String ticket) {
+        return loginTicketMapper.selectByTicket(ticket);
+    }
+
+    /**
+     * 方法功能：根据用户id更新用户的头像链接
+     * @param userId 用户id
+     * @param headerUrl 需更新的头像链接
+     * @return
+     */
+    public int updateHeader(int userId, String headerUrl) {
+        return userMapper.updateHeader(userId, headerUrl);
+    }
+
+    /**
+     * 方法功能：根据用户id更新用户的密码
+     * @param userId
+     * @param password
+     * @return
+     */
+    public int updatePassword(int userId, String password) {
+        return userMapper.updatePassword(userId, password);
+    }
+
 }
